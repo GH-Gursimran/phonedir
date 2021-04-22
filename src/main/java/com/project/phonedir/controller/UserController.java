@@ -58,12 +58,7 @@ public class UserController {
         // Business logic to save the credentials. of the users to teh given database
         boolean status = userService.registerUser(user);
 
-        if(status){
-            userService.login(user);
-            return "redirect:/phonedirs";
-        }else {
-            return "index";
-        }
+        return "index";
 
     }
 
