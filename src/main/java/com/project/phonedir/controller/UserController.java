@@ -60,7 +60,7 @@ public class UserController {
 
         if(status){
             userService.login(user);
-            return "phonedir";
+            return "redirect:/phonedirs";
         }else {
             return "index";
         }
