@@ -71,13 +71,14 @@
                           <input type="text" class="form-control" placeholder="Enter Username" required id="username" name="username" th:field="${user.username}">
                         </div>
                         <div class="mb-3">
-                          <label for="password" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="password" placeholder="Enter Password" required name="password" th:field="${user.password}">
-                        </div>
-                        <div class="mb-3">
                           <label for="Email" class="form-label">Email</label>
                           <input type="text" class="form-control" id="Email" placeholder="Enter Email" required name="email" th:field="${user.email}">
                         </div>
+                        <div class="mb-3">
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="password" placeholder="Enter Password" required name="password" th:field="${user.password}">
+                        </div>
+                        
                         <div class="mb-3">
                           <label for="PhoneNumber" class="form-label">Phone Number</label>
                           <input type="text" class="form-control" id="PhoneNumber" placeholder="Enter Phone Number"required name="phonenum" th:field="${user.phonenum}">
