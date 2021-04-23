@@ -8,9 +8,9 @@
 <body>
 <header th:fragment="logged-out" th:remove="tag">
     <header>
-        <div class="px-3 py-2 border-bottom mb-3">
+        <div class="px-3 py-2 bg-dark border-bottom mb-3">
             <div class="container d-flex flex-wrap justify-content-end">
-          
+              
               <div class="text-end">
                 <button type="button" class="btn btn-light text-dark me-2" data-bs-toggle="modal" data-bs-target="#Login">Login</button>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SignUp">Sign-up</button>
@@ -37,7 +37,11 @@
                           <label for="password" class="form-label" >Password</label>
                           <input type="password" class="form-control" required th:field="*{password}" id="password">
                         </div>
-                        <button type="submit" class="btn submit-button w-100">Login</button>
+                        <br>
+                        <div class="container-fluid text-center">
+                          <button type="submit" class="btn submit-button btn-success w-50">Login</button>
+                        </div>
+                        
                       </form>
     
                     </div>
@@ -79,7 +83,10 @@
                           <input type="text" class="form-control" id="PhoneNumber" placeholder="Enter Phone Number"required name="phonenum" th:field="${user.phonenum}">
                         </div>
                         <br>
-                        <button type="submit" class="btn submit-button w-100">Submit</button>
+                        <div class="container-fluid text-center">
+                          <button type="submit" class="btn btn-success submit-button w-50">Register</button>
+                        </div>
+                        
                         <div style="height: 20px;"></div>
                       </form>
     
@@ -99,7 +106,7 @@
         <!--<form method="post" th:action="@{/users/logout}">
             <input type="submit" value="Logout" />
         </form>-->
-        <div class="px-3 py-2 border-bottom mb-3">
+        <div class="px-3 py-2 bg-dark border-bottom mb-3">
             <div class="container d-flex flex-wrap justify-content-end">
           
               <div class="text-end">
