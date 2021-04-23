@@ -11,6 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @Configuration
 public class JPAConfig {
@@ -27,19 +29,25 @@ public class JPAConfig {
     @Value("${spring.datasource.driverClassName}")
     private String className;
 
+
     @Bean
-    public EntityManagerFactory entityManagerFactory() {
+    public EntityManagerFactory entityManagerFactory() throws URISyntaxException{
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.afterPropertiesSet();
         return entityManagerFactoryBean.getObject();
     }
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource() throws URISyntaxException {
+        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:postgresql://"+dbUrl);
-        config.setUsername(dbUsername);
-        config.setPassword(dbPassword);
+        config.setJdbcUrl(dbUrl);
+        config.setUsername(username);
+        config.setPassword(password);
         config.setDriverClassName(className);
         return new HikariDataSource(config);
     }
