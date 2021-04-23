@@ -26,7 +26,6 @@ public class UserController {
     // POST Request to "/users/login"
     @RequestMapping(method = RequestMethod.POST, value = "/users/login")
     public String loginUser(User user, HttpSession session) {
-        System.out.println(user.getPassword() +  user.getUsername());
         User existingUser = userService.login(user);
 
         // check if the credentials match
